@@ -33,7 +33,7 @@ The system is an ESP32-based race starter that controls audible horn signals, vi
 
 #### 2.1.1 Core Processing
 - **Microcontroller:** ESP32 development board (e.g., TTGO ESP32 with integrated OLED)
-- **Display:** 0.96" OLED (128x64 pixels, I2C interface)
+- **Display:** 1.3" OLED (128x64 pixels, I2C interface, SH1106)
 - **Real-Time Clock:** ESP32 internal timer/RTC for accurate timekeeping
 
 #### 2.1.2 Input Devices

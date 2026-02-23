@@ -16,7 +16,7 @@
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+#include <Adafruit_SH110X.h>
 #include <WiFi.h>
 #include <WebServer.h>
 #include <ESPmDNS.h>
@@ -26,9 +26,9 @@
 // HARDWARE PIN DEFINITIONS
 // ============================================================================
 
-// OLED Display (I2C)
-#define OLED_SDA 4
-#define OLED_SCL 15
+// OLED Display (I2C) - SH1106 Driver
+#define OLED_SDA 21
+#define OLED_SCL 22
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 #define OLED_RESET -1
@@ -150,7 +150,7 @@ const int SEQ_5_MINUTE_REPEAT_LEN = sizeof(SEQ_5_MINUTE_REPEAT) / sizeof(Sequenc
 // GLOBAL OBJECTS
 // ============================================================================
 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+Adafruit_SH1106G display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 WebServer server(80);
 
 // ============================================================================
@@ -304,18 +304,22 @@ void setupHardware() {
   pinMode(BUZZER_PIN, OUTPUT);
   digitalWrite(BUZZER_PIN, LOW);
 
-  // Initialize I2C for OLED
+  // Initialize I2C for OLED (SH1106 Driver)
   Wire.begin(OLED_SDA, OLED_SCL);
+  delay(100);
 
-  // Initialize OLED display
-  if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+  // Initialize OLED display with SH1106 driver (via SH110X library)
+  if (!display.begin(SCREEN_ADDRESS, true)) {
     Serial.println("ERROR: OLED display initialization failed!");
     for (;;); // Halt
   }
 
+  delay(100);
   display.clearDisplay();
+  display.display();
+  delay(100);
   display.setTextSize(1);
-  display.setTextColor(SSD1306_WHITE);
+  display.setTextColor(SH110X_WHITE);
   display.setCursor(0, 0);
   display.println("  RACE START TIMER");
   display.println("  ================");
@@ -679,7 +683,7 @@ void updateDisplay() {
 
   display.clearDisplay();
   display.setTextSize(1);
-  display.setTextColor(SSD1306_WHITE);
+  display.setTextColor(SH110X_WHITE);
 
   if (systemState == STATE_IDLE) {
     // Idle screen

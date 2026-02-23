@@ -19,7 +19,7 @@ Complete implementation of the Sailboat Race Starting System for ESP32 DevKit V1
 
 ### Main Components
 - **ESP32 DevKit V1** (30-pin)
-- **0.96" OLED Display** (128x64, I2C, SSD1306)
+- **1.3" OLED Display** (128x64, I2C, SSD1306)
 - **8-Channel Relay Module** (5V logic, 10A rating)
 - **Active Buzzer** (5V piezo)
 - **3x Momentary Push Buttons**
@@ -30,7 +30,7 @@ Complete implementation of the Sailboat Race Starting System for ESP32 DevKit V1
 
 ### Pin Connections
 
-#### OLED Display (I2C)
+#### OLED Display (I2C) - 1.3" 128x64 SSD1306
 ```
 GPIO 4  → SDA
 GPIO 15 → SCL
@@ -287,8 +287,9 @@ Operator alerts before each flag change:
 
 ### Display Not Working
 - Check I2C connections (SDA on GPIO 4, SCL on GPIO 15)
-- Verify I2C address is 0x3C (default for SSD1306)
+- Verify I2C address is 0x3C (default for SSD1306 128x64)
 - Check 3.3V power supply to OLED
+- Ensure display is 1.3" OLED with 128x64 resolution
 
 ### WiFi Not Connecting
 - Reset device and wait 30 seconds
