@@ -1006,22 +1006,22 @@ GPIO PIN ASSIGNMENT SUMMARY
 
 | GPIO Pin | Function                  | Type   | Notes                        |
 |----------|---------------------------|--------|------------------------------|
-| GPIO4    | OLED SDA                  | I2C    | With 4.7kΩ pull-up          |
-| GPIO15   | OLED SCL                  | I2C    | With 4.7kΩ pull-up          |
+| GPIO21   | OLED SDA                  | I2C    | With 4.7kΩ pull-up          |
+| GPIO22   | OLED SCL                  | I2C    | With 4.7kΩ pull-up          |
 | GPIO13   | Relay CH1 (Horn)          | Output | Active HIGH                  |
 | GPIO12   | Relay CH2 (Class Light)   | Output | Active HIGH                  |
 | GPIO14   | Relay CH3 (Prep Light)    | Output | Active HIGH                  |
 | GPIO27   | Relay CH4 (Auxiliary)     | Output | Active HIGH                  |
 | GPIO23   | Relay CH5 (Reserved)      | Output | Future: AP Light             |
-| GPIO22   | Relay CH6 (Reserved)      | Output | Future: Bell                 |
+| GPIO15   | Relay CH6 (Reserved)      | Output | Future: Bell                 |
 | GPIO5    | Relay CH7 (Reserved)      | Output | Future: Trigger              |
-| GPIO17   | Relay CH8 (Reserved)      | Output | Future: Aux                  |
+| GPIO2    | Relay CH8 (Reserved)      | Output | Future: Aux                  |
 | GPIO32   | Button: Start/Reset       | Input  | Pull-down, active HIGH       |
 | GPIO33   | Button: Mode Select       | Input  | Pull-down, active HIGH       |
 | GPIO25   | Button: Horn Test         | Input  | Pull-down, active HIGH       |
 | GPIO18   | LED: Class Flag Indicator | Output | With 220Ω resistor           |
 | GPIO19   | LED: Prep Flag Indicator  | Output | With 220Ω resistor           |
-| GPIO21   | LED: Heartbeat            | Output | With 220Ω resistor           |
+| GPIO4    | LED: Heartbeat            | Output | With 220Ω resistor           |
 | GPIO26   | Buzzer                    | Output | 5V active buzzer             |
 
 

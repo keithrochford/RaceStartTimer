@@ -42,9 +42,9 @@
 
 // Reserved for future use
 #define RELAY_CH5 23
-#define RELAY_CH6 22
+#define RELAY_CH6 15
 #define RELAY_CH7 5
-#define RELAY_CH8 17
+#define RELAY_CH8 2
 
 // Button Inputs (Active HIGH with pull-down)
 #define BTN_START 32    // Start/Reset button
@@ -54,7 +54,7 @@
 // LED Indicators
 #define LED_CLASS 18     // Class flag indicator (Red)
 #define LED_PREP 19      // Prep flag indicator (Blue)
-#define LED_HEARTBEAT 21 // System heartbeat (Green)
+#define LED_HEARTBEAT 4  // System heartbeat (Green)
 
 // Buzzer Output
 #define BUZZER_PIN 26
@@ -695,7 +695,7 @@ void updateDisplay() {
     display.println(getModeString());
     display.println();
     display.println(" Press START to begin");
-    display.println(" Mode button to change");
+    display.println(" MODE btn to change"); //Mode button to change
   } else if (systemState == STATE_ACTIVE) {
     // Active countdown
     int32_t timeRemaining = getTimeRemaining();
@@ -704,7 +704,7 @@ void updateDisplay() {
 
     display.setCursor(0, 0);
     display.println(getModeString());
-    display.println("------------------");
+    display.println("---------------------");
     
     // Large timer
     display.setTextSize(3);
@@ -726,11 +726,11 @@ void updateDisplay() {
 
     // Status indicators
     display.setCursor(0, 56);
-    display.print(classFlag ? "●" : "○");
+    display.print(classFlag ? "*" : "o");
     display.print(" CLASS  ");
-    display.print(prepFlag ? "●" : "○");
-    display.print(" PREP ");
-    display.print(heartbeatState ? "♥" : " ");
+    display.print(prepFlag ? "*" : "o");
+    display.print(" PREP     ");
+    display.print(heartbeatState ? "*" : " ");
   } else if (systemState == STATE_COUNT_UP) {
     // Post-start count up
     int32_t elapsed = getTimeElapsed();
